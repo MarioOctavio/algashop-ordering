@@ -39,3 +39,9 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: ./gradlew sonar -Dsonar.token=$SONAR_TOKEN
 
+      - name: Upload Gradle Problems Report
+        if: always() # Executa mesmo que o build ou análise falhem
+        uses: actions/upload-artifact@v4
+        with:
+          name: gradle-problems-report
+          path: build/reports/problems/problems-report.html
