@@ -34,8 +34,8 @@ jobs:
       - name: Build, test and generate coverage
         run: ./gradlew clean build jacocoTestReport
 
-      #- name: Run SonarCloud analysis
-        #env:
-          #SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        #run: ./gradlew sonarqube -Dsonar.login=$SONAR_TOKEN
+      - name: Run SonarCloud analysis
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        run: ./gradlew sonarqube -Dsonar.login=$SONAR_TOKEN
 
